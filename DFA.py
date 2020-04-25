@@ -26,7 +26,8 @@ class DFA:
         
         
         transition function: each row represents a state, and each column
-        represents a string in the alphabet
+        represents a string in the alphabet, their intersection is the 
+        transition state
         """
         self.states = states
         self.alpha = alpha
@@ -131,11 +132,10 @@ class DFA:
     
     @staticmethod
     def are_equivalent(dfa1, dfa2):
-        if (DFA.get_symmetric_diff(dfa1, dfa2).accepted_path_exists() == "language empty"
-        and DFA.get_symmetric_diff(dfa2, dfa1).accepted_path_exists() == "language empty"):
-            return True
+        if (DFA.get_symmetric_diff(dfa1, dfa2).accepted_path_exists() == "language empty"):
+            return "equivalent"
         else:
-            return False
+            return "not equivalent"
     
 class NonMatchingAlphabetError(Exception):
     def __init__(self, value):

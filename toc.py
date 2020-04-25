@@ -5,10 +5,15 @@ def main():
     #test1()
     #test2()
     
-    DFA1 = Converter.get_DFA_from_file("D1.txt")
-    DFA2 = Converter.get_DFA_from_file("D2.txt")
+    DFA1 = Converter.get_DFA_from_file("test3.txt")
+    DFA2 = Converter.get_DFA_from_file("test4.txt")
     
-    newDFA = DFA.get_symmetric_diff(DFA1, DFA2)
+    inter = DFA.get_intersect(DFA1, DFA2)
+    #Converter.get_file_from_DFA(inter, "sys")
+    symm = DFA.get_symmetric_diff(DFA1, DFA2)
+    Converter.get_file_from_DFA(symm, "sys")
+    
+    print(DFA.accepted_path_exists(symm))
     
     
 

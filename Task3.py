@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Apr 25 02:16:01 2020
+Created on Sat Apr 25 03:30:02 2020
 
 @author: Izabele
 """
@@ -10,8 +10,8 @@ from DFA import DFA
 import sys
 
 """
-Task 2:
-    Intersection
+Task 3:
+    Symmetric Difference
 """
 
 if __name__ == "__main__":
@@ -21,8 +21,8 @@ if __name__ == "__main__":
     dfa1 = Converter.get_DFA_from_file(filename1)
     dfa2 = Converter.get_DFA_from_file(filename2)
     
-    inter = DFA.get_intersect(dfa1, dfa2)
+    sym = DFA.get_symmetric_diff(dfa1, dfa2)
     
-    Converter.get_file_from_DFA(inter, "sys")
+    Converter.get_file_from_DFA(sym, "sys")
     
     
