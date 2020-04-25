@@ -8,8 +8,7 @@ def main():
     DFA1 = Converter.get_DFA_from_file("D1.txt")
     DFA2 = Converter.get_DFA_from_file("D2.txt")
     
-    newDFA = DFA.get_symmetric_diff(DFA1, DFA2)
-    
+    DFA.get_symmetric_diff(DFA1, DFA2)
     
 
 def test3():

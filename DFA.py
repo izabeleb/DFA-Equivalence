@@ -89,7 +89,7 @@ class DFA:
         states = []
         for s1 in dfa1.states:
             for s2 in dfa2.states:
-                states.append([s1, s2])
+                states.append(str(s1) + str(s2))
         # transitions
         transitions = [] 
         for state in states:
@@ -97,15 +97,15 @@ class DFA:
             for char in alpha:
                 transition1 = dfa1.get_transition(state[0], char)
                 transition2 = dfa2.get_transition(state[1], char)
-                row.append([transition1, transition2])
+                row.append(str(transition1) + str(transition2))
             transitions.append(row)
         # state state
-        start_state = [dfa1.start_state, dfa2.start_state]
+        start_state = str(dfa1.start_state) + str(dfa2.start_state)
         # accept states
         accept_states = []
         for accept_state1 in dfa1.accept_states:
             for accept_state2 in dfa2.accept_states:
-                accept_states.append([accept_state1, accept_state2])
+                accept_states.append(str(accept_state1) + str(accept_state2))
         # completed dfa
         return DFA(states, alpha, transitions, start_state, accept_states)
     
@@ -125,14 +125,13 @@ class DFA:
         for s1 in dfa1.states:
             for s2 in dfa2.states:
                 if (s1 in dfa1.accept_states) or (s2 in dfa2.accept_states):    
-                    accept_states.append([s1, s2])
+                    accept_states.append(str(s1) + str(s2))
         inter_DFA.accept_states = accept_states
         return inter_DFA
     
     @staticmethod
     def are_equivalent(dfa1, dfa2):
-        if (DFA.get_symmetric_diff(dfa1, dfa2).accepted_path_exists() == "language empty"
-        and DFA.get_symmetric_diff(dfa2, dfa1).accepted_path_exists() == "language empty"):
+        if (DFA.get_symmetric_diff(dfa1, dfa2).accepted_path_exists() == "language empty"):
             return True
         else:
             return False
